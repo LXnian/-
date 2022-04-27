@@ -6,6 +6,7 @@ function onNav() {
     })
 }
 onNav()
+
 //首页列表切换
 function onli() {
     $('#main .banner>ul').on('mouseover', 'li', function () {
@@ -138,24 +139,26 @@ function detail(id) {
 }
 //动态渲染列表
 function cartList(list) {
-    let newList = list.map(item => {
-        return `<li onclick="detail(${item.id})">
-                    <img src="${item.picture}" alt="">
-                    <div class="bottom">
-                        <div class="one">${item.shop}</div>
-                        <div class="label">
-                            <div>淘宝</div>
-                            <div>包邮</div>
+
+        let newList = list.map(item => {
+            return `<li onclick="detail(${item.id})">
+                        <img src="${item.picture}" alt="">
+                        <div class="bottom">
+                            <div class="one">${item.shop}</div>
+                            <div class="label">
+                                <div>淘宝</div>
+                                <div>包邮</div>
+                            </div>
+                            <div class="pricelabel">
+                                <div class="price">￥${item.price}</div>
+                                <div class="num">${item.oldprice}人已买</div>
+                                <div class="lab">${item.categoryname}</div>
+                            </div>
                         </div>
-                        <div class="pricelabel">
-                            <div class="price">￥${item.price}</div>
-                            <div class="num">${item.oldprice}人已买</div>
-                            <div class="lab">${item.categoryname}</div>
-                        </div>
-                    </div>
-                </li>`
-    }).join('')
-    $('#main .list ul').append(newList)
+                    </li>`
+        }).join('')
+        $('#main .list ul').append(newList)
+  
 }
 //加载更多
 function btnMore() {
